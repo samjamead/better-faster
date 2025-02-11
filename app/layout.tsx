@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer";
 import { cn } from "@/lib/utils";
+import QueryProvider from "@/components/query-provider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,7 +39,7 @@ export default function RootLayout({
           <div className="flex flex-col gap-4">
             <Header maxWidth={maxWidth} />
             <div className={cn("mx-auto flex w-full flex-col gap-4", maxWidth)}>
-              {children}
+              <QueryProvider>{children}</QueryProvider>
             </div>
           </div>
           <Footer maxWidth={maxWidth} />

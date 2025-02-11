@@ -1,22 +1,15 @@
-import { createClient } from "@/lib/supabase/server";
+import RoundsTable from "@/components/rounds/rounds-table";
 
 export default async function Rounds() {
-  const supabase = await createClient();
-
-  const { data: rounds, error } = await supabase.from("rounds").select("*");
-
-  if (error) {
-    <div>Error loading rounds</div>;
-  }
-
   return (
-    <div>
-      {rounds?.map((round) => (
-        <div key={round.id}>
-          <p>{round.round_date}</p>
-          <p>{round.round_course}</p>
-        </div>
-      ))}
+    <div className="flex flex-col gap-4">
+      <div className="flex items-center justify-between gap-4">
+        <h2>Rounds</h2>
+        <button className="rounded-md bg-blue-500 px-4 py-2 text-white">
+          Add Round
+        </button>
+      </div>
+      <RoundsTable />
     </div>
   );
 }
