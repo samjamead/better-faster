@@ -2,6 +2,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LogInButton, LogOutButton } from "./auth-buttons";
 import { createClient } from "@/lib/supabase/server";
+import MainNav from "./main-nav";
 
 export default async function Header({ maxWidth }: { maxWidth: string }) {
   const supabase = await createClient();
@@ -11,22 +12,18 @@ export default async function Header({ maxWidth }: { maxWidth: string }) {
   } = await supabase.auth.getUser();
 
   return (
-    <header>
+    <header className="border-b">
       <nav
         className={cn(
           "mx-auto flex items-center justify-between py-4",
           maxWidth,
         )}
       >
-        <Link href="/">
-          <h2 className="text-2xl font-bold">Better Faster</h2>
-        </Link>
-        <div>
-          {user && (
-            <Link href="/rounds">
-              <p>Rounds</p>
-            </Link>
-          )}
+        <div className="flex items-baseline gap-16">
+          <Link href="/">
+            <h2 className="text-lg font-semibold">Better Faster</h2>
+          </Link>
+          {user && <MainNav />}
         </div>
 
         {user ? <LogOutButton /> : <LogInButton />}
