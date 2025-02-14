@@ -16,6 +16,10 @@ export default function MainNav() {
       label: "Tests",
       href: "/tests",
     },
+    {
+      label: "Round Builder",
+      href: "/round-builder",
+    },
   ];
 
   return (
