@@ -5,24 +5,44 @@ export type Golfer = {
 };
 
 export type Round = {
-  id: number; // bigint
-  created_at: string; // timestamp with time zone
-  edited_at: string; // timestamp with time zone
-  round_date: string; // date
-  round_course: string; // text
-  round_tee: string; // text
-  round_holes: number; // smallint
-  round_side: string; // text
-  round_par: number; // smallint
-  round_gross: number; // smallint
-  round_net: number; // smallint
-  round_stableford: number; // smallint
-  round_fairways_hit: number; // double precision
-  round_greens_in_regulation: number; // double precision
-  round_up_and_down: number; // double precision
-  round_putts: number; // smallint
-  round_penalty_strokes: number; // smallint
-  round_handicap_index: number; // double precision (Handicap index at the start of the round)
-  round_playing_handicap: number; // smallint (Shots received that day)
-  round_golfer: Golfer;
+  id: number;
+  created_at: string;
+  edited_at: string | null;
+  date: string;
+  course: string;
+  tee: string;
+  holes_played: number;
+  side: string | null;
+  par: number;
+  net: number;
+  stableford: number | null;
+  fairways_hit: number | null;
+  greens_in_regulation: number | null;
+  up_and_down: number | null;
+  putts: number | null;
+  penalty_strokes: number | null;
+  handicap_index: number | null;
+  playing_handicap: number | null;
+  golfer_id: string;
+  greens_on_par_three: number | null;
+  greens_from_fairway: number | null;
+  greens_from_rough: number | null;
+  birdies: number | null;
+  double_bogeys: number | null;
+  three_putts: number | null;
+};
+
+export type RoundAverages = {
+  golfer_id: string;
+  avg_fairways_hit: number | null;
+  avg_greens_in_regulation: number | null;
+  avg_up_and_down: number | null;
+  avg_putts_per_hole: number | null;
+  avg_greens_on_par_three: number | null;
+  avg_greens_from_fairway: number | null;
+  avg_greens_from_rough: number | null;
+  avg_birdies: number | null;
+  avg_double_bogeys: number | null;
+  avg_three_putts: number | null;
+  avg_penalty_strokes: number | null;
 };
