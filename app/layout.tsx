@@ -33,13 +33,17 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} px-3 antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="flex min-h-svh flex-col justify-between gap-8">
           <div className="flex flex-col gap-8">
             <Header maxWidth={maxWidth} />
-            <div className={cn("mx-auto flex w-full flex-col gap-4", maxWidth)}>
-              <QueryProvider>{children}</QueryProvider>
+            <div className="px-3">
+              <div
+                className={cn("mx-auto flex w-full flex-col gap-4", maxWidth)}
+              >
+                <QueryProvider>{children}</QueryProvider>
+              </div>
             </div>
           </div>
           <Footer maxWidth={maxWidth} />

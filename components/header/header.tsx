@@ -12,7 +12,7 @@ export default async function Header({ maxWidth }: { maxWidth: string }) {
   } = await supabase.auth.getUser();
 
   return (
-    <header className="border-b">
+    <header className="border-b bg-background-secondary px-3">
       <nav
         className={cn(
           "mx-auto flex items-center justify-between py-4",
