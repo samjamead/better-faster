@@ -45,7 +45,11 @@ export default async function RealityCheck() {
 
   return (
     <div className="flex items-start gap-8">
-      <div className="max-w-fit overflow-x-auto rounded-md border bg-background-secondary">
+      <div className="w-full overflow-x-auto rounded-md border bg-background-secondary">
+        <div className="px-3 py-4">
+          <h3 className="text-lg font-bold">Key Metrics</h3>
+        </div>
+
         <Table>
           <TableBody>
             {Object.entries(funnelStats).map(([key, value]) => (

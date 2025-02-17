@@ -15,11 +15,11 @@ export default async function Header({ maxWidth }: { maxWidth: string }) {
     <header className="border-b bg-background-secondary px-3">
       <nav
         className={cn(
-          "mx-auto flex items-center justify-between py-4",
+          "mx-auto flex flex-col items-start justify-between gap-4 py-4 lg:flex-row lg:items-center",
           maxWidth,
         )}
       >
-        <div className="flex items-baseline gap-16">
+        <div className="flex flex-col items-baseline gap-4 lg:flex-row lg:gap-16">
           <Link href="/">
             <h2 className="text-lg font-semibold">Better Faster</h2>
           </Link>
