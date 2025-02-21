@@ -9,6 +9,10 @@ export default function MainNav() {
 
   const navItems = [
     {
+      label: "Home",
+      href: "/",
+    },
+    {
       label: "Rounds",
       href: "/rounds",
     },
@@ -23,15 +27,14 @@ export default function MainNav() {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-4 lg:flex-row lg:items-center">
+    <div className="flex flex-col items-start gap-2 font-mono font-medium tracking-wide">
       {navItems.map((item) => (
         <Link
           key={item.href}
           href={item.href}
           className={cn(
-            pathname === item.href &&
-              "border border-blue-500/30 bg-blue-500/20",
-            "rounded-md px-3 py-1 hover:bg-blue-500/20",
+            "-ml-4 w-[calc(100%+16px)] rounded-md px-4 py-2 hover:bg-primary/25",
+            pathname === item.href && "bg-primary/50 hover:bg-primary/50",
           )}
         >
           <p>{item.label}</p>

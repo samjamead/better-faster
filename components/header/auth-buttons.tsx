@@ -13,15 +13,13 @@ export const LogInButton = async () => {
 
 export const LogOutButton = async () => {
   return (
-    <div className="flex items-center gap-4">
-      <form action="/auth/sign-out" method="post">
-        <button
-          type="submit"
-          className="rounded-md border px-3 py-1 text-sm text-white no-underline transition-colors hover:bg-foreground/10"
-        >
-          Logout
-        </button>
-      </form>
-    </div>
+    <form action="/auth/sign-out" method="post">
+      <button
+        type="submit"
+        className="-ml-3 w-full rounded-md px-3 py-2 text-left font-mono text-foreground no-underline transition-colors hover:bg-primary/50"
+      >
+        Logout
+      </button>
+    </form>
   );
 };

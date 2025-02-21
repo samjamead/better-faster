@@ -11,6 +11,33 @@ export default {
   theme: {
     extend: {
       colors: {
+        "blue-ribbon": {
+          "50": "#eef6ff",
+          "100": "#d8eaff",
+          "200": "#b9daff",
+          "300": "#89c4ff",
+          "400": "#52a4ff",
+          "500": "#2a7eff",
+          "600": "#0d58fd",
+          "700": "#0c46e9",
+          "800": "#1139bc",
+          "900": "#143594",
+          "950": "#11225a",
+        },
+        emerald: {
+          "50": "#edfcf3",
+          "100": "#d3f8e1",
+          "200": "#abefc8",
+          "300": "#74e1a9",
+          "400": "#3dcb86",
+          "500": "#19b06c",
+          "600": "#0c8f56",
+          "700": "#0a7247",
+          "800": "#0b5a3a",
+          "900": "#0a4a31",
+          "950": "#042a1c",
+        },
+
         background: "hsl(var(--background))",
         "background-secondary": "hsl(var(--background-secondary))",
         foreground: "hsl(var(--foreground))",
@@ -60,7 +87,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        mono: ["var(--font-geist-mono)", ...fontFamily.mono],
+        sans: ["var(--font-inter)", ...fontFamily.sans],
+        mono: ["var(--font-inconsolata)", ...fontFamily.mono],
       },
     },
   },

@@ -2,11 +2,11 @@ import Image from "next/image";
 import githubMark from "@/public/github-mark.svg";
 import githubMarkWhite from "@/public/github-mark-white.svg";
 import { cn } from "@/lib/utils";
-export default function Footer({ maxWidth }: { maxWidth: string }) {
+export default function Footer() {
   return (
-    <footer className="px-3">
-      <div className={cn("mx-auto flex justify-end py-8", maxWidth)}>
-        <p className="flex items-center gap-2 rounded border bg-background px-3 py-2 font-mono text-sm shadow">
+    <footer className="border-t px-3 md:px-8">
+      <div className={cn("mx-auto flex justify-end py-8")}>
+        <p className="flex items-center gap-2 rounded border px-3 py-2 font-mono text-sm shadow">
           <Image
             src={githubMark}
             alt="GitHub"
