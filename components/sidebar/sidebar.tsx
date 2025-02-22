@@ -1,6 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
-import { LogOutButton } from "../header/auth-buttons";
-import MainNav from "../header/main-nav";
+import { LogOutButton } from "@/components/sidebar/auth-buttons";
+import MainNav from "./main-nav";
 export default async function Sidebar() {
   const supabase = await createClient();
 

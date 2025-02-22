@@ -52,7 +52,7 @@ export default async function RealityCheck() {
             {Object.entries(funnelStats).map(([key, value]) => (
               <TableRow key={key}>
                 <TableCell className="p-3 pr-8 lg:pr-20">{key}</TableCell>
-                <TableCell className="p-3 text-right font-mono font-semibold tracking-wide">
+                <TableCell className="p-3 text-right font-mono text-base font-semibold tracking-wide">
                   {value ?? "N/A"}
                 </TableCell>
               </TableRow>

@@ -21,6 +21,10 @@ export default function MainNav() {
       href: "/tests",
     },
     {
+      label: "Drills",
+      href: "/drills",
+    },
+    {
       label: "Round Builder",
       href: "/round-builder",
     },
@@ -34,7 +38,10 @@ export default function MainNav() {
           href={item.href}
           className={cn(
             "-ml-4 w-[calc(100%+16px)] rounded-md px-4 py-1 hover:bg-primary/25",
-            pathname === item.href && "bg-primary/50 hover:bg-primary/50",
+            (item.href === "/"
+              ? pathname === "/"
+              : pathname.startsWith(item.href)) &&
+              "bg-primary/50 hover:bg-primary/50",
           )}
         >
           <p>{item.label}</p>

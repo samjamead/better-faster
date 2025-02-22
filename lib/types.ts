@@ -46,3 +46,15 @@ export type RoundAverages = {
   avg_three_putts: number | null;
   avg_penalty_strokes: number | null;
 };
+
+export type WedgeTest = {
+  id: number;
+  created_at: string;
+  edited_at: string | null;
+  test_date: string;
+  shots_hit: number;
+  average_proximity: number;
+  landing_spot_percentage: number;
+  trajectory_percentage: number;
+  quality_contact_percentage: number;
+};
