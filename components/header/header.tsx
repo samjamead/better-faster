@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-
+import GolferSummary from "./golfer-summary";
 export default async function Header() {
   const supabase = await createClient();
 
@@ -18,9 +18,7 @@ export default async function Header() {
           <h2 className="font-bold tracking-wide">Better Faster</h2>
         </Link>
 
-        <div className="px-4 pb-4 pt-5">
-          {user && <p>Logged in as {user.email}</p>}
-        </div>
+        <div className="px-4 pb-4 pt-5">{user && <GolferSummary />}</div>
       </nav>
     </header>
   );

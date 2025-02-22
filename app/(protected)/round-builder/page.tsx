@@ -13,7 +13,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-
+import { Heading2 } from "@/components/typography/typography";
 const GolfScoreCalculator = () => {
   const [upAndDownPercentage, setUpAndDownPercentage] = useState<number>(45);
   const [threePutts, setThreePutts] = useState<number>(0);
@@ -104,7 +104,7 @@ const GolfScoreCalculator = () => {
 
   return (
     <div className="space-y-8">
-      <h2 className="text-2xl font-bold">Round Builder</h2>
+      <Heading2>Round Builder</Heading2>
       <Card className="bg-foreground/10 p-6 shadow-lg backdrop-blur-sm">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-6">
           <div className="space-y-2">

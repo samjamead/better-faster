@@ -27,13 +27,13 @@ export default function MainNav() {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-2 font-mono font-medium tracking-wide">
+    <div className="flex flex-col items-start gap-1 font-mono font-medium tracking-wide">
       {navItems.map((item) => (
         <Link
           key={item.href}
           href={item.href}
           className={cn(
-            "-ml-4 w-[calc(100%+16px)] rounded-md px-4 py-2 hover:bg-primary/25",
+            "-ml-4 w-[calc(100%+16px)] rounded-md px-4 py-1 hover:bg-primary/25",
             pathname === item.href && "bg-primary/50 hover:bg-primary/50",
           )}
         >

@@ -1,7 +1,7 @@
 import { createClient } from "@/lib/supabase/server";
 import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
 import { formatDecimalAsPercentage } from "@/lib/utils";
-
+import { Heading2 } from "@/components/typography/typography";
 export default async function RealityCheck() {
   const supabase = await createClient();
   const { data, error } = await supabase
@@ -44,20 +44,15 @@ export default async function RealityCheck() {
   };
 
   return (
-    <div className="flex items-start gap-8">
+    <div className="flex flex-col gap-8">
+      <Heading2>Reality Check</Heading2>
       <div className="w-full overflow-x-auto rounded-md border bg-background-secondary">
-        <div className="px-3 py-4">
-          <h3 className="text-lg font-bold">Key Metrics</h3>
-        </div>
-
         <Table>
           <TableBody>
             {Object.entries(funnelStats).map(([key, value]) => (
               <TableRow key={key}>
-                <TableCell className="p-3 pr-8 font-mono lg:pr-20">
-                  {key}
-                </TableCell>
-                <TableCell className="p-3 text-right font-mono">
+                <TableCell className="p-3 pr-8 lg:pr-20">{key}</TableCell>
+                <TableCell className="p-3 text-right font-mono font-semibold tracking-wide">
                   {value ?? "N/A"}
                 </TableCell>
               </TableRow>
