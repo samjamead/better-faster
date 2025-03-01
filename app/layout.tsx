@@ -35,9 +35,12 @@ export default function RootLayout({
         <div className="flex min-h-svh flex-col">
           <Header />
           <div className="flex flex-1">
-            <Sidebar />
+            <div className="hidden md:block">
+              <Sidebar />
+            </div>
+
             <div className="flex flex-1 flex-col overflow-y-auto">
-              <div className="flex-1 p-8">
+              <div className="flex-1 px-3 py-8 md:px-8">
                 <QueryProvider>{children}</QueryProvider>
               </div>
               <Footer />

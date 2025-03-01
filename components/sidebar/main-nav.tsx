@@ -31,7 +31,7 @@ export default function MainNav() {
   ];
 
   return (
-    <div className="flex flex-col items-start gap-1 font-mono font-medium tracking-wide">
+    <div className="flex flex-col items-start gap-4 font-mono font-medium tracking-wide md:gap-1">
       {navItems.map((item) => (
         <Link
           key={item.href}

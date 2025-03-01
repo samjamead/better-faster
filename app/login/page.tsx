@@ -2,9 +2,9 @@ import { login } from "./actions";
 
 export default function LoginPage() {
   return (
-    <div className="mx-auto mt-20 w-full max-w-md space-y-8 rounded-lg border bg-background-secondary p-4 lg:p-16">
+    <div className="mx-auto w-full max-w-md space-y-8 rounded-lg p-4 pt-8 md:border md:bg-background-secondary md:pt-20 lg:p-16">
       <h2 className="text-2xl font-bold">Log in</h2>
-      <form className="flex flex-col gap-4">
+      <form className="flex flex-col gap-6">
         <div className="space-y-2">
           <label className="block" htmlFor="email">
             Email:
@@ -18,20 +18,22 @@ export default function LoginPage() {
           />
         </div>
 
-        <label className="block" htmlFor="password">
-          Password:
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          required
-          className="w-full rounded-md bg-foreground/20 px-3 py-1"
-        />
+        <div className="space-y-2">
+          <label className="block" htmlFor="password">
+            Password:
+          </label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            required
+            className="w-full rounded-md bg-foreground/20 px-3 py-1"
+          />
+        </div>
 
         <div className="pt-4 text-right">
           <button
-            className="rounded-md bg-blue-500 px-3 py-1 text-white"
+            className="w-full rounded-md bg-blue-500 px-3 py-1 text-white md:max-w-fit"
             formAction={login}
           >
             Log in

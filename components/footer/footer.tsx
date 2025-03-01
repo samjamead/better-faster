@@ -10,10 +10,10 @@ export default async function Footer() {
   const repoData = await data.json();
   return (
     <footer className="border-t px-3 md:px-8">
-      <div className="flex flex-col items-center justify-between py-8 md:flex-row">
-        <div className="flex flex-col gap-4 text-sm">
+      <div className="flex flex-col items-center justify-between gap-8 pb-20 pt-12 md:flex-row lg:py-8">
+        <div className="flex flex-col gap-4 text-center text-sm md:text-left">
           <p>Made with ❤️ in the Channel Islands</p>
-          <p>
+          <p className="max-w-72">
             Last updated by commit{" "}
             <a
               href={`https://github.com/samjamead/better-faster/commits/main/`}
