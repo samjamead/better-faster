@@ -36,7 +36,7 @@ export default function RootLayout({
           <Header />
           <div className="flex flex-1">
             <Sidebar />
-            <div className="flex flex-1 flex-col">
+            <div className="flex flex-1 flex-col overflow-y-auto">
               <div className="flex-1 p-8">
                 <QueryProvider>{children}</QueryProvider>
               </div>

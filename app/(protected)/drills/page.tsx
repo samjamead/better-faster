@@ -1,5 +1,3 @@
-"use client";
-
 import { Plus } from "lucide-react";
 import { Heading2 } from "@/components/typography/typography";
 export default function TestsPage() {

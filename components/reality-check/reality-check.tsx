@@ -44,7 +44,7 @@ export default async function RealityCheck() {
   };
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex max-w-lg flex-col gap-8">
       <Heading2>Reality Check</Heading2>
       <div className="w-full overflow-x-auto rounded-md border bg-background-secondary">
         <Table>

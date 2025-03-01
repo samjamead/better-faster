@@ -9,7 +9,7 @@ export default async function Header() {
   } = await supabase.auth.getUser();
 
   return (
-    <header className="border-b bg-background font-mono">
+    <header className="sticky top-0 z-50 border-b bg-background font-mono">
       <nav className="flex items-center justify-start gap-4">
         <Link
           href="/"

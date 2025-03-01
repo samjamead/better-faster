@@ -16,38 +16,61 @@ export const columns: ColumnDef<Round>[] = [
   },
   {
     accessorKey: "course",
-    header: "Course",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Course" />;
+    },
+    cell: ({ row }) => {
+      return <div className="whitespace-nowrap">{row.original.course}</div>;
+    },
   },
   {
     accessorKey: "handicap_index",
-    header: "Handicap Index",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Handicap Index" />;
+    },
   },
   {
     accessorKey: "holes_played",
-    header: "Holes",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Holes" />;
+    },
   },
   {
     accessorKey: "gross",
-    header: "Score",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Score" />;
+    },
   },
   {
     accessorKey: "fairways_hit",
-    header: "Fairways Hit",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Fairways Hit" />;
+    },
   },
   {
     accessorKey: "greens_in_regulation",
-    header: "Greens in Regulation",
+    header: ({ column }) => {
+      return (
+        <SortableColumnHeader column={column} title="Greens in Regulation" />
+      );
+    },
   },
   {
     accessorKey: "up_and_down",
-    header: "Up and Down",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Up and Down" />;
+    },
   },
   {
     accessorKey: "putts",
-    header: "Putts",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Putts" />;
+    },
   },
   {
     accessorKey: "penalty_strokes",
-    header: "Penalty Strokes",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Penalty Strokes" />;
+    },
   },
 ];

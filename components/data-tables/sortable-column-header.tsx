@@ -33,7 +33,7 @@ export function SortableColumnHeader<TData, TValue>({
         ) : column.getIsSorted() === "asc" ? (
           <ArrowUp />
         ) : (
-          <ChevronsUpDown />
+          <ChevronsUpDown className="h-4 w-4 opacity-0" />
         )}
       </Button>
     </div>
