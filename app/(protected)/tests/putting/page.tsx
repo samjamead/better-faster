@@ -8,7 +8,7 @@ export default function TestsPage() {
     <div className="flex flex-col gap-8">
       <div className="flex items-end justify-between gap-16">
         <Heading2>Putting Tests</Heading2>
-        <LogTestButton />
+        <LogTestButton testType="putting" />
       </div>
       <TestsTable
         testType="putting"
