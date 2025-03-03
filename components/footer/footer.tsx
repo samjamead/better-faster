@@ -13,7 +13,7 @@ export default async function Footer() {
       <div className="flex flex-col items-center justify-between gap-8 pb-20 pt-12 md:flex-row lg:py-8">
         <div className="flex flex-col gap-4 text-center text-sm md:text-left">
           <p>Made with ❤️ in the Channel Islands</p>
-          <p className="max-w-72">
+          <p className="max-w-72 md:max-w-prose">
             Last updated by commit{" "}
             <a
               href={`https://github.com/samjamead/better-faster/commits/main/`}

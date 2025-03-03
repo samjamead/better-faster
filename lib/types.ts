@@ -58,3 +58,11 @@ export type WedgeTest = {
   trajectory_percentage: number;
   quality_contact_percentage: number;
 };
+
+export type PuttingTest = {
+  id: number;
+  created_at: string;
+  edited_at: string | null;
+  test_date: string;
+  strokes_gained_putting: number;
+};

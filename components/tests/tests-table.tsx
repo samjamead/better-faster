@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { getWedgeTests } from "./actions";
 import { useQuery } from "@tanstack/react-query";
 import {
   flexRender,
@@ -9,6 +8,7 @@ import {
   useReactTable,
   SortingState,
   getSortedRowModel,
+  ColumnDef,
 } from "@tanstack/react-table";
 
 import {
@@ -20,10 +20,19 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { columns } from "./tests-table-columns";
+import { wedgeTestColumns, puttingTestColumns } from "./tests-table-columns";
 import LoadingDataTable from "@/components/loading-states/loading-data-table";
+import { WedgeTest, PuttingTest } from "@/lib/types";
 
-export default function TestsTable() {
+export default function TestsTable({
+  testType,
+  queryKey,
+  queryFn,
+}: {
+  testType: string;
+  queryKey: string[];
+  queryFn: () => Promise<WedgeTest[] | PuttingTest[]>;
+}) {
   const [sorting, setSorting] = useState<SortingState>([]);
 
   const {
@@ -31,13 +40,15 @@ export default function TestsTable() {
     isLoading,
     error,
   } = useQuery({
-    queryKey: ["wedge_tests"],
-    queryFn: () => getWedgeTests(),
+    queryKey,
+    queryFn,
   });
+
+  const columns = testType === "wedge" ? wedgeTestColumns : puttingTestColumns;
 
   const table = useReactTable({
     data: tests,
-    columns,
+    columns: columns as ColumnDef<WedgeTest | PuttingTest>[],
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
