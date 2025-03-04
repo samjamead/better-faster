@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
-import { Minus, Plus } from "lucide-react";
+import { Counter } from "@/components/ui/counter";
 import { Golfer } from "@/lib/types";
 import { upsertPuttingTest, logPuttingTestData } from "./actions";
 
@@ -32,68 +32,6 @@ const SGP_VALUES: Record<number, number> = {
   27: 1.953,
   30: 1.978,
 };
-
-type CounterProps = {
-  value: number;
-  onChange: (value: number) => void;
-  min?: number;
-  max?: number;
-  step?: number;
-  label: string;
-  unit?: string;
-};
-
-function Counter({
-  value,
-  onChange,
-  min = 0,
-  max = 10,
-  step = 1,
-  label,
-  unit,
-}: CounterProps) {
-  const increment = () => {
-    if (value + step <= max) {
-      onChange(value + step);
-    }
-  };
-
-  const decrement = () => {
-    if (value - step >= min) {
-      onChange(value - step);
-    }
-  };
-
-  return (
-    <div className="space-y-2">
-      <Label>{label}</Label>
-      <div className="flex items-center gap-2">
-        <Button
-          type="button"
-          variant="outline"
-          size="icon"
-          onClick={decrement}
-          disabled={value <= min}
-        >
-          <Minus className="h-4 w-4" />
-        </Button>
-        <div className="flex-1 text-center">
-          <span className="text-lg font-medium">{value}</span>
-          {unit && <span className="ml-1 text-muted-foreground">{unit}</span>}
-        </div>
-        <Button
-          type="button"
-          variant="outline"
-          size="icon"
-          onClick={increment}
-          disabled={value >= max}
-        >
-          <Plus className="h-4 w-4" />
-        </Button>
-      </div>
-    </div>
-  );
-}
 
 // Calculate strokes gained for a single putt
 const calculateStrokesGained = (distance: number, totalPutts: number) => {
@@ -119,13 +57,15 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
     goodSpeedCount: 0,
     goodReadCount: 0,
     puttsHoled: 0,
+    totalProximity: 0,
+    totalMissedPutts: 0,
   });
   const [puttData, setPuttData] = useState({
     proximity: 0,
     putts: 1,
-    good_line: false,
-    good_speed: false,
-    good_read: false,
+    good_line: true,
+    good_speed: true,
+    good_read: true,
   });
 
   const startTest = async () => {
@@ -144,6 +84,8 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
         goodSpeedCount: 0,
         goodReadCount: 0,
         puttsHoled: 0,
+        totalProximity: 0,
+        totalMissedPutts: 0,
       });
       setStep("putting");
     } catch (error) {
@@ -170,21 +112,30 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
       });
 
       // Update running stats
-      setTestStats((prev) => ({
-        totalStrokesGained: prev.totalStrokesGained + strokesGained,
-        goodLineCount: prev.goodLineCount + (puttData.good_line ? 1 : 0),
-        goodSpeedCount: prev.goodSpeedCount + (puttData.good_speed ? 1 : 0),
-        goodReadCount: prev.goodReadCount + (puttData.good_read ? 1 : 0),
-        puttsHoled: prev.puttsHoled + (puttData.putts === 1 ? 1 : 0),
-      }));
+      setTestStats((prev) => {
+        const isMissed = puttData.putts > 1;
+        const newTotalMissedPutts = prev.totalMissedPutts + (isMissed ? 1 : 0);
+        const newTotalProximity =
+          prev.totalProximity + (isMissed ? puttData.proximity : 0);
+
+        return {
+          totalStrokesGained: prev.totalStrokesGained + strokesGained,
+          goodLineCount: prev.goodLineCount + (puttData.good_line ? 1 : 0),
+          goodSpeedCount: prev.goodSpeedCount + (puttData.good_speed ? 1 : 0),
+          goodReadCount: prev.goodReadCount + (puttData.good_read ? 1 : 0),
+          puttsHoled: prev.puttsHoled + (puttData.putts === 1 ? 1 : 0),
+          totalProximity: newTotalProximity,
+          totalMissedPutts: newTotalMissedPutts,
+        };
+      });
 
       // Reset form for next putt
       setPuttData({
         proximity: 0,
         putts: 1,
-        good_line: false,
-        good_speed: false,
-        good_read: false,
+        good_line: true,
+        good_speed: true,
+        good_read: true,
       });
 
       if (remainingDistances.length > 0) {
@@ -192,14 +143,24 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
         setRemainingDistances(remainingDistances.slice(1));
       } else {
         // Update test with final stats
+        const averageProximity =
+          testStats.totalMissedPutts > 0
+            ? Number(
+                (testStats.totalProximity / testStats.totalMissedPutts).toFixed(
+                  1,
+                ),
+              )
+            : 0;
+
         await upsertPuttingTest({
           id: testId,
           golfer_id: golfer.id,
           test_date: new Date().toISOString().split("T")[0],
           strokes_gained_putting: testStats.totalStrokesGained,
-          good_line_percentage: (testStats.goodLineCount / 10) * 100,
-          good_speed_percentage: (testStats.goodSpeedCount / 10) * 100,
-          good_read_percentage: (testStats.goodReadCount / 10) * 100,
+          average_proximity: averageProximity,
+          good_line_percentage: testStats.goodLineCount / 10,
+          good_speed_percentage: testStats.goodSpeedCount / 10,
+          good_read_percentage: testStats.goodReadCount / 10,
         });
         setStep("complete");
       }
@@ -210,27 +171,27 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
 
   if (step === "intro") {
     return (
-      <Card className="w-full max-w-2xl">
+      <Card className="w-full max-w-lg">
         <CardHeader>
           <Heading2>Putting Test</Heading2>
-          <p className="text-muted-foreground">
-            Test your putting skills with 10 putts at different distances. Each
-            putt will be from a random distance between 3 and 30 feet.
-          </p>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <h3 className="font-semibold">Instructions:</h3>
-            <ol className="list-decimal space-y-2 pl-4">
-              <li>Set up your putt at the indicated distance</li>
-              <li>Read the line and make your practice strokes</li>
-              <li>Hit your putt and putt out if you miss</li>
-              <li>Record the results honestly</li>
-            </ol>
+            <p>
+              You&apos;re going to putt to 10 different holes. You&apos;ll be
+              given the distance for each hole.
+            </p>
+            <p>
+              Try to vary the break, and whether the putt is uphill or downhill.
+            </p>
+            <p>
+              For each hole location, record the number of putts, proximity of
+              your first putt, and whether you hit a good line, speed, and read.
+            </p>
           </div>
         </CardContent>
-        <CardFooter>
-          <Button onClick={startTest}>Start Test</Button>
+        <CardFooter className="flex justify-end">
+          <Button onClick={startTest}>Start Putting Test</Button>
         </CardFooter>
       </Card>
     );
@@ -238,12 +199,12 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
 
   if (step === "putting") {
     return (
-      <Card className="w-full max-w-2xl">
+      <Card className="w-full max-w-lg">
         <CardHeader>
-          <Heading2>{currentDistance} Foot Putt</Heading2>
           <p className="text-muted-foreground">
-            Putt {11 - remainingDistances.length} of 10
+            Putt {10 - remainingDistances.length} of 10
           </p>
+          <Heading2>{currentDistance} feet</Heading2>
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
@@ -255,21 +216,19 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
               max={4}
             />
 
-            {puttData.putts > 1 && (
-              <Counter
-                label="First Putt Proximity"
-                value={puttData.proximity}
-                onChange={(value) =>
-                  setPuttData({ ...puttData, proximity: value })
-                }
-                min={0}
-                max={10}
-                step={0.5}
-                unit="feet"
-              />
-            )}
+            <Counter
+              label="First Putt Proximity"
+              value={puttData.proximity}
+              onChange={(value) =>
+                setPuttData({ ...puttData, proximity: value })
+              }
+              min={0}
+              max={10}
+              step={0.5}
+              unit="feet"
+            />
 
-            <div className="space-y-4">
+            <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <Label htmlFor="good_read">Good Read</Label>
                 <Switch
@@ -305,63 +264,77 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
             </div>
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex justify-end pt-4">
           <Button onClick={nextPutt}>Next Putt</Button>
         </CardFooter>
       </Card>
     );
   }
 
-  return (
-    <Card className="w-full max-w-2xl">
-      <CardHeader>
-        <Heading2>Test Complete!</Heading2>
-      </CardHeader>
-      <CardContent>
-        <div className="space-y-4">
-          <p>Great job completing your putting test. Here are your results:</p>
+  if (step === "complete") {
+    const averageProximity =
+      testStats.totalMissedPutts > 0
+        ? (testStats.totalProximity / testStats.totalMissedPutts).toFixed(1)
+        : "0.0";
 
-          <div className="grid gap-4 rounded-lg border p-4">
-            <div className="grid grid-cols-2 gap-2">
-              <p className="text-muted-foreground">One-Putts</p>
-              <p className="text-right font-medium">
-                {testStats.puttsHoled} / 10
-              </p>
-            </div>
+    return (
+      <Card className="w-full max-w-lg">
+        <CardHeader>
+          <Heading2>Test Complete</Heading2>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="grid gap-4 rounded-lg border p-4">
+              <div className="grid grid-cols-2 gap-2">
+                <p className="text-muted-foreground">One Putts</p>
+                <p className="text-right font-medium">
+                  {testStats.puttsHoled} / 10
+                </p>
+              </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <p className="text-muted-foreground">Strokes Gained</p>
-              <p className="text-right font-medium">
-                {testStats.totalStrokesGained.toFixed(3)}
-              </p>
-            </div>
+              <div className="grid grid-cols-2 gap-2">
+                <p className="text-muted-foreground">Average Proximity</p>
+                <p className="text-right font-medium">
+                  {averageProximity} feet
+                </p>
+              </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <p className="text-muted-foreground">Good Reads</p>
-              <p className="text-right font-medium">
-                {testStats.goodReadCount} / 10
-              </p>
-            </div>
+              <div className="grid grid-cols-2 gap-2">
+                <p className="text-muted-foreground">Strokes Gained</p>
+                <p className="text-right font-medium">
+                  {testStats.totalStrokesGained.toFixed(3)}
+                </p>
+              </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <p className="text-muted-foreground">Good Lines</p>
-              <p className="text-right font-medium">
-                {testStats.goodLineCount} / 10
-              </p>
-            </div>
+              <div className="grid grid-cols-2 gap-2">
+                <p className="text-muted-foreground">Good Reads</p>
+                <p className="text-right font-medium">
+                  {testStats.goodReadCount} / 10
+                </p>
+              </div>
 
-            <div className="grid grid-cols-2 gap-2">
-              <p className="text-muted-foreground">Good Speed</p>
-              <p className="text-right font-medium">
-                {testStats.goodSpeedCount} / 10
-              </p>
+              <div className="grid grid-cols-2 gap-2">
+                <p className="text-muted-foreground">Good Lines</p>
+                <p className="text-right font-medium">
+                  {testStats.goodLineCount} / 10
+                </p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-2">
+                <p className="text-muted-foreground">Good Speed</p>
+                <p className="text-right font-medium">
+                  {testStats.goodSpeedCount} / 10
+                </p>
+              </div>
             </div>
           </div>
-        </div>
-      </CardContent>
-      <CardFooter>
-        <Button onClick={() => window.location.reload()}>Start New Test</Button>
-      </CardFooter>
-    </Card>
-  );
+        </CardContent>
+        <CardFooter className="flex justify-end pt-4">
+          <Button onClick={() => window.location.reload()}>
+            Start New Test
+          </Button>
+        </CardFooter>
+      </Card>
+    );
+  }
 }

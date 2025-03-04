@@ -1,4 +1,3 @@
-import { Heading2 } from "@/components/typography/typography";
 import { testsConfig, TestType } from "../../testsConfig";
 import InvalidTestType from "@/components/error-states/invalid-test-type";
 import { createClient } from "@/lib/supabase/server";
@@ -25,7 +24,6 @@ export default async function NewTestPage({
 
   return (
     <div className="flex flex-col gap-4">
-      <Heading2>New {pageConfig.name} Test</Heading2>
       {type === "putting" && <PuttingTestForm golfer={golfer} />}
     </div>
   );
