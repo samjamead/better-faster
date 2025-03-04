@@ -1,6 +1,254 @@
 [
   {
     "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "drill_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> drills.id"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "date",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "notes",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "total_shots",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "avg_proximity",
+    "data_type": "double precision",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "up_and_down_percentage",
+    "data_type": "double precision",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "total_score",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_session",
+    "column_name": "golfer_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> golfers.id"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "session_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> drill_session.id"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "station",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "difficulty",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "trajectory",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "club",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "proximity",
+    "data_type": "double precision",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "up_and_down",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "score",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "best_worse",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "timestamp",
+    "data_type": "timestamp without time zone",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drill_shots",
+    "column_name": "golfer_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> golfers.id"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drills",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drills",
+    "column_name": "drill_type",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drills",
+    "column_name": "drill_category",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "drills",
+    "column_name": "drill_name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "golfer_stats",
+    "column_name": "name",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "golfer_stats",
+    "column_name": "handicap",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "golfer_stats",
+    "column_name": "holes_played",
+    "data_type": "bigint",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "golfer_stats",
+    "column_name": "holes_per_birdie",
+    "data_type": "numeric",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "golfer_stats",
+    "column_name": "tests_completed",
+    "data_type": "bigint",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "golfer_stats",
+    "column_name": "most_played_course",
+    "data_type": "text",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
     "table_name": "golfers",
     "column_name": "id",
     "data_type": "uuid",
@@ -30,6 +278,166 @@
     "data_type": "real",
     "is_nullable": "YES",
     "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "test_id",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> putting_tests.id"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "distance",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "score",
+    "data_type": "integer",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "strokes_gained_putting",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "good_line",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "good_speed",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "good_read",
+    "data_type": "boolean",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "proximity",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_test_data",
+    "column_name": "golfer_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> golfers.id"
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "id",
+    "data_type": "integer",
+    "is_nullable": "NO",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "created_at",
+    "data_type": "timestamp with time zone",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "test_date",
+    "data_type": "date",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "average_proximity",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "good_line_percentage",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "good_speed_percentage",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "good_read_percentage",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "strokes_gained_putting",
+    "data_type": "real",
+    "is_nullable": "YES",
+    "foreign_key_reference": ""
+  },
+  {
+    "table_schema": "public",
+    "table_name": "putting_tests",
+    "column_name": "golfer_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> golfers.id"
   },
   {
     "table_schema": "public",
@@ -409,6 +817,14 @@
   },
   {
     "table_schema": "public",
+    "table_name": "wedge_test_data",
+    "column_name": "golfer_id",
+    "data_type": "uuid",
+    "is_nullable": "YES",
+    "foreign_key_reference": "FK -> golfers.id"
+  },
+  {
+    "table_schema": "public",
     "table_name": "wedge_tests",
     "column_name": "id",
     "data_type": "bigint",
@@ -434,7 +850,7 @@
   {
     "table_schema": "public",
     "table_name": "wedge_tests",
-    "column_name": "test_golfer",
+    "column_name": "golfer_id",
     "data_type": "uuid",
     "is_nullable": "YES",
     "foreign_key_reference": "FK -> golfers.id"

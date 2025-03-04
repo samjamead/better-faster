@@ -60,9 +60,13 @@ export type WedgeTest = {
 };
 
 export type PuttingTest = {
-  id: number;
-  created_at: string;
-  edited_at: string | null;
+  id?: number;
+  golfer_id: string;
   test_date: string;
-  strokes_gained_putting: number;
+  created_at?: string;
+  average_proximity?: number;
+  good_line_percentage?: number;
+  good_speed_percentage?: number;
+  good_read_percentage?: number;
+  strokes_gained_putting?: number;
 };
