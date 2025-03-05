@@ -111,24 +111,6 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
         ...puttData,
       });
 
-      // Update running stats
-      setTestStats((prev) => {
-        const isMissed = puttData.putts > 1;
-        const newTotalMissedPutts = prev.totalMissedPutts + (isMissed ? 1 : 0);
-        const newTotalProximity =
-          prev.totalProximity + (isMissed ? puttData.proximity : 0);
-
-        return {
-          totalStrokesGained: prev.totalStrokesGained + strokesGained,
-          goodLineCount: prev.goodLineCount + (puttData.good_line ? 1 : 0),
-          goodSpeedCount: prev.goodSpeedCount + (puttData.good_speed ? 1 : 0),
-          goodReadCount: prev.goodReadCount + (puttData.good_read ? 1 : 0),
-          puttsHoled: prev.puttsHoled + (puttData.putts === 1 ? 1 : 0),
-          totalProximity: newTotalProximity,
-          totalMissedPutts: newTotalMissedPutts,
-        };
-      });
-
       // Reset form for next putt
       setPuttData({
         proximity: 0,
@@ -139,16 +121,52 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
       });
 
       if (remainingDistances.length > 0) {
+        // Update running stats
+        const isMissed = puttData.putts > 1;
+        const newTotalMissedPutts =
+          testStats.totalMissedPutts + (isMissed ? 1 : 0);
+        const newTotalProximity =
+          testStats.totalProximity + (isMissed ? puttData.proximity : 0);
+
+        const updatedStats = {
+          totalStrokesGained: testStats.totalStrokesGained + strokesGained,
+          goodLineCount: testStats.goodLineCount + (puttData.good_line ? 1 : 0),
+          goodSpeedCount:
+            testStats.goodSpeedCount + (puttData.good_speed ? 1 : 0),
+          goodReadCount: testStats.goodReadCount + (puttData.good_read ? 1 : 0),
+          puttsHoled: testStats.puttsHoled + (puttData.putts === 1 ? 1 : 0),
+          totalProximity: newTotalProximity,
+          totalMissedPutts: newTotalMissedPutts,
+        };
+        setTestStats(updatedStats);
+
         setCurrentDistance(remainingDistances[0]);
         setRemainingDistances(remainingDistances.slice(1));
       } else {
-        // Update test with final stats
+        // Test complete, update summary stats
+        const isMissed = puttData.putts > 1;
+        const newTotalMissedPutts =
+          testStats.totalMissedPutts + (isMissed ? 1 : 0);
+        const newTotalProximity =
+          testStats.totalProximity + (isMissed ? puttData.proximity : 0);
+
+        const updatedStats = {
+          totalStrokesGained: testStats.totalStrokesGained + strokesGained,
+          goodLineCount: testStats.goodLineCount + (puttData.good_line ? 1 : 0),
+          goodSpeedCount:
+            testStats.goodSpeedCount + (puttData.good_speed ? 1 : 0),
+          goodReadCount: testStats.goodReadCount + (puttData.good_read ? 1 : 0),
+          puttsHoled: testStats.puttsHoled + (puttData.putts === 1 ? 1 : 0),
+          totalProximity: newTotalProximity,
+          totalMissedPutts: newTotalMissedPutts,
+        };
+
         const averageProximity =
-          testStats.totalMissedPutts > 0
+          updatedStats.totalMissedPutts > 0
             ? Number(
-                (testStats.totalProximity / testStats.totalMissedPutts).toFixed(
-                  1,
-                ),
+                (
+                  updatedStats.totalProximity / updatedStats.totalMissedPutts
+                ).toFixed(1),
               )
             : 0;
 
@@ -156,11 +174,17 @@ export default function PuttingTestForm({ golfer }: { golfer: Golfer }) {
           id: testId,
           golfer_id: golfer.id,
           test_date: new Date().toISOString().split("T")[0],
-          strokes_gained_putting: testStats.totalStrokesGained,
+          strokes_gained_putting: updatedStats.totalStrokesGained,
           average_proximity: averageProximity,
-          good_line_percentage: testStats.goodLineCount / 10,
-          good_speed_percentage: testStats.goodSpeedCount / 10,
-          good_read_percentage: testStats.goodReadCount / 10,
+          good_line_percentage: Number(
+            (updatedStats.goodLineCount / 10).toFixed(3),
+          ),
+          good_speed_percentage: Number(
+            (updatedStats.goodSpeedCount / 10).toFixed(3),
+          ),
+          good_read_percentage: Number(
+            (updatedStats.goodReadCount / 10).toFixed(3),
+          ),
         });
         setStep("complete");
       }

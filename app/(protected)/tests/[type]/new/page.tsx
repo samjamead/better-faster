@@ -2,6 +2,7 @@ import { testsConfig, TestType } from "../../testsConfig";
 import InvalidTestType from "@/components/error-states/invalid-test-type";
 import { createClient } from "@/lib/supabase/server";
 import PuttingTestForm from "@/components/tests/putting-test-form";
+import WedgeTestForm from "@/components/tests/wedge-test-form";
 
 export default async function NewTestPage({
   params,
@@ -25,6 +26,7 @@ export default async function NewTestPage({
   return (
     <div className="flex flex-col gap-4">
       {type === "putting" && <PuttingTestForm golfer={golfer} />}
+      {type === "wedge" && <WedgeTestForm golfer={golfer} />}
     </div>
   );
 }

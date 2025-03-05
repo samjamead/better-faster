@@ -48,15 +48,16 @@ export type RoundAverages = {
 };
 
 export type WedgeTest = {
-  id: number;
-  created_at: string;
-  edited_at: string | null;
+  id?: number;
+  golfer_id: string;
+  created_at?: string;
   test_date: string;
-  shots_hit: number;
-  average_proximity: number;
-  landing_spot_percentage: number;
-  trajectory_percentage: number;
-  quality_contact_percentage: number;
+  shots_hit?: number;
+  total_proximity?: number;
+  average_proximity?: number;
+  landing_spot_percentage?: number;
+  trajectory_percentage?: number;
+  quality_contact_percentage?: number;
 };
 
 export type PuttingTest = {
