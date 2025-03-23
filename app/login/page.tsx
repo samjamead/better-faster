@@ -2,9 +2,9 @@ import { login } from "./actions";
 
 export default function LoginPage() {
   return (
-    <div className="mx-auto w-full max-w-md space-y-8 rounded-lg p-4 pt-8 md:border md:bg-background-secondary md:pt-20 lg:p-16">
+    <div className="h-full w-full space-y-8 bg-background-secondary p-4 lg:p-16">
       <h2 className="text-2xl font-bold">Log in</h2>
-      <form className="flex flex-col gap-6">
+      <form className="flex max-w-md flex-col gap-6">
         <div className="space-y-2">
           <label className="block" htmlFor="email">
             Email:

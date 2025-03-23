@@ -1,4 +1,4 @@
-import RealityCheck from "@/components/reality-check/reality-check";
+import SummaryStats from "@/components/summary-stats/summary-stats";
 import { createClient } from "@/lib/supabase/server";
 import { redirect } from "next/navigation";
 export default async function Home() {
@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
     <div className="grid grid-cols-1 items-start gap-8">
-      <RealityCheck />
+      <SummaryStats />
     </div>
   );
 }
