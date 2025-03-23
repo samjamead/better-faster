@@ -79,7 +79,7 @@ export default async function SummaryStats() {
       </div>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-        {(["Per 18 holes", "Long game", "Short game"] as Category[]).map(
+        {(["Short game", "Per 18 holes", "Long game"] as Category[]).map(
           (category) => (
             <div
               key={category}
@@ -88,7 +88,10 @@ export default async function SummaryStats() {
               <Heading3>{category}</Heading3>
               <div className="space-y-4">
                 {Object.entries(funnelStats[category]).map(([key, value]) => (
-                  <div key={key}>
+                  <div
+                    key={key}
+                    className="flex items-baseline justify-between gap-2"
+                  >
                     <p className="text-sm font-semibold text-muted-foreground">
                       {key}
                     </p>
