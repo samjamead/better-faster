@@ -14,3 +14,8 @@ export const formatDecimalAsPercentage = (
   }
   return (value * 100).toFixed(precision) + " %";
 };
+
+export const prettySlug = (slug: string) => slug.replace(/-/g, " ");
+
+export const capPrettySlug = (slug: string) =>
+  prettySlug(slug).replace(/\b\w/g, (char) => char.toUpperCase());
