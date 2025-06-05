@@ -32,13 +32,13 @@ export default function EmptyState() {
       <div className="flex min-h-[250px] flex-col items-center justify-center gap-2 rounded-md border bg-background-secondary p-4 lg:p-12">
         <h3 className="text-lg font-bold">No data... yet</h3>
         <div className="flex items-center justify-center gap-4 p-4">
-          <div className="rounded border border-black bg-background p-3 shadow">
+          <div className="rounded border border-black bg-background p-3 shadow-sm">
             <SquareDashed className="h-4 w-4 text-muted-foreground" />
           </div>
-          <div className="rounded border border-black bg-background p-3 text-muted-foreground shadow">
+          <div className="rounded border border-black bg-background p-3 text-muted-foreground shadow-sm">
             <TriangleDashed />
           </div>
-          <div className="rounded border border-black bg-background p-3 shadow">
+          <div className="rounded border border-black bg-background p-3 shadow-sm">
             <CircleDashed className="h-4 w-4 text-muted-foreground" />
           </div>
         </div>

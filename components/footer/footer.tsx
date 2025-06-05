@@ -45,7 +45,7 @@ export default async function Footer() {
           )}
         </div>
 
-        <p className="flex items-center gap-2 rounded border px-4 py-2 font-mono text-sm shadow">
+        <p className="flex items-center gap-2 rounded border px-4 py-2 font-mono text-sm shadow-sm">
           <Image
             src={githubMark}
             alt="GitHub"

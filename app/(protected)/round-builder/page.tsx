@@ -105,7 +105,7 @@ const GolfScoreCalculator = () => {
   return (
     <div className="space-y-8">
       <Heading2>Round Builder</Heading2>
-      <Card className="bg-foreground/10 p-6 shadow-lg backdrop-blur-sm">
+      <Card className="bg-foreground/10 p-6 shadow-lg backdrop-blur-xs">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-6">
           <div className="space-y-2">
             <Label htmlFor="upAndDown" className="text-sm font-medium">
@@ -210,7 +210,7 @@ const GolfScoreCalculator = () => {
       </Card>
 
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-[3fr_2fr]">
-        <Card className="bg-foreground/10 p-6 shadow-lg backdrop-blur-sm">
+        <Card className="bg-foreground/10 p-6 shadow-lg backdrop-blur-xs">
           <div className="prose prose-sm max-w-none space-y-4">
             <div className="space-y-4">
               <p className="text-charcoal leading-relaxed">
@@ -286,7 +286,7 @@ const GolfScoreCalculator = () => {
           </div>
         </Card>
 
-        <Card className="bg-foreground/10 p-6 shadow-lg backdrop-blur-sm">
+        <Card className="bg-foreground/10 p-6 shadow-lg backdrop-blur-xs">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
