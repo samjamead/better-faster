@@ -14,7 +14,7 @@ import { Input } from "@/components/ui/input";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Badge } from "@/components/ui/badge";
 import { Golfer } from "@/lib/types";
-import { upsertRound } from "./actions";
+import { upsertRound } from "@/api/upsert-rounds";
 
 type TeeColor = "red" | "yellow" | "white" | "blue";
 type Side = "front" | "back";
@@ -293,7 +293,7 @@ export default function RoundForm({ golfer }: { golfer: Golfer }) {
                 onChange={(e) => handleNumericChange("gross", e.target.value)}
                 required
               />
-              <span className="text-nowrap pl-4 text-sm text-muted-foreground lg:pr-8">
+              <span className="text-muted-foreground pl-4 text-sm text-nowrap lg:pr-8">
                 Net: {net ?? "-"}
               </span>
             </div>
@@ -316,7 +316,7 @@ export default function RoundForm({ golfer }: { golfer: Golfer }) {
           <div className="space-y-2">
             <div className="flex items-center gap-4">
               <Label htmlFor="fairways_hit">Fairways Hit</Label>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-muted-foreground text-sm">
                 Enter as a decimal
               </span>
             </div>
@@ -338,7 +338,7 @@ export default function RoundForm({ golfer }: { golfer: Golfer }) {
           <div className="space-y-2">
             <div className="flex items-center gap-4">
               <Label htmlFor="greens_in_regulation">Greens in Regulation</Label>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-muted-foreground text-sm">
                 Enter as a decimal
               </span>
             </div>
@@ -364,7 +364,7 @@ export default function RoundForm({ golfer }: { golfer: Golfer }) {
           <div className="space-y-2">
             <div className="flex items-center gap-4">
               <Label htmlFor="up_and_down">Up and Down</Label>
-              <span className="text-sm text-muted-foreground">
+              <span className="text-muted-foreground text-sm">
                 Enter as a decimal
               </span>
             </div>
@@ -457,7 +457,7 @@ export default function RoundForm({ golfer }: { golfer: Golfer }) {
               <Label htmlFor="greens_on_par_three">Greens on Par 3s</Label>
               <div className="flex items-center gap-2">
                 <Badge variant="default">Optional</Badge>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-muted-foreground text-sm">
                   Enter as a decimal
                 </span>
               </div>
@@ -481,7 +481,7 @@ export default function RoundForm({ golfer }: { golfer: Golfer }) {
               <Label htmlFor="greens_from_fairway">Greens from Fairway</Label>
               <div className="flex items-center gap-2">
                 <Badge variant="default">Optional</Badge>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-muted-foreground text-sm">
                   Enter as a decimal
                 </span>
               </div>
@@ -505,7 +505,7 @@ export default function RoundForm({ golfer }: { golfer: Golfer }) {
               <Label htmlFor="greens_from_rough">Greens from Rough</Label>
               <div className="flex items-center gap-2">
                 <Badge variant="default">Optional</Badge>
-                <span className="text-sm text-muted-foreground">
+                <span className="text-muted-foreground text-sm">
                   Enter as a decimal
                 </span>
               </div>

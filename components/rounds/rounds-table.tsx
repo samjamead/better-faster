@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { getRounds } from "./actions";
+import { getRounds } from "@/api/get-rounds";
 import { useQuery } from "@tanstack/react-query";
 import {
   flexRender,
@@ -36,7 +36,7 @@ export default function RoundsTable() {
   });
 
   const table = useReactTable({
-    data: rounds,
+    data: rounds || [],
     columns,
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
@@ -48,9 +48,9 @@ export default function RoundsTable() {
 
   if (error) return <div>Error: {error.message}</div>;
 
-  return isLoading ? (
-    <LoadingDataTable />
-  ) : (
+  if (isLoading) return <LoadingDataTable />;
+
+  return (
     <div className="rounded-md border">
       <Table>
         <TableHeader>

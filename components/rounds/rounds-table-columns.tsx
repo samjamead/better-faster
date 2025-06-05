@@ -68,6 +68,12 @@ export const columns: ColumnDef<Round>[] = [
     },
   },
   {
+    accessorKey: "birdies",
+    header: ({ column }) => {
+      return <SortableColumnHeader column={column} title="Birdies" />;
+    },
+  },
+  {
     accessorKey: "penalty_strokes",
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Penalty Strokes" />;
