@@ -26,13 +26,7 @@ export const columns: ColumnDef<Round>[] = [
   {
     accessorKey: "handicap_index",
     header: ({ column }) => {
-      return (
-        <SortableColumnHeader
-          column={column}
-          title="Handicap Index"
-          className="flex-row-reverse"
-        />
-      );
+      return <SortableColumnHeader column={column} title="Handicap Index" />;
     },
     meta: {
       align: "right",
@@ -43,17 +37,26 @@ export const columns: ColumnDef<Round>[] = [
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Holes" />;
     },
+    meta: {
+      align: "right",
+    },
   },
   {
     accessorKey: "gross",
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Score" />;
     },
+    meta: {
+      align: "right",
+    },
   },
   {
     accessorKey: "fairways_hit",
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Fairways Hit" />;
+    },
+    meta: {
+      align: "right",
     },
   },
   {
@@ -63,11 +66,17 @@ export const columns: ColumnDef<Round>[] = [
         <SortableColumnHeader column={column} title="Greens in Regulation" />
       );
     },
+    meta: {
+      align: "right",
+    },
   },
   {
     accessorKey: "up_and_down",
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Up and Down" />;
+    },
+    meta: {
+      align: "right",
     },
   },
   {
@@ -75,17 +84,26 @@ export const columns: ColumnDef<Round>[] = [
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Putts" />;
     },
+    meta: {
+      align: "right",
+    },
   },
   {
     accessorKey: "birdies",
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Birdies" />;
     },
+    meta: {
+      align: "right",
+    },
   },
   {
     accessorKey: "penalty_strokes",
     header: ({ column }) => {
       return <SortableColumnHeader column={column} title="Penalty Strokes" />;
+    },
+    meta: {
+      align: "right",
     },
   },
 ];

@@ -22,6 +22,7 @@ import {
 
 import { columns } from "./rounds-table-columns";
 import LoadingDataTable from "@/components/loading-states/loading-data-table";
+import { cn } from "@/lib/utils";
 
 export default function RoundsTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -79,7 +80,13 @@ export default function RoundsTable() {
                 data-state={row.getIsSelected() && "selected"}
               >
                 {row.getVisibleCells().map((cell) => (
-                  <TableCell key={cell.id}>
+                  <TableCell
+                    key={cell.id}
+                    className={cn(
+                      cell.column.columnDef.meta?.align === "right" &&
+                        "text-right",
+                    )}
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
                   </TableCell>
                 ))}

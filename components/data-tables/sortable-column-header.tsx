@@ -22,7 +22,7 @@ export function SortableColumnHeader<TData, TValue>({
     <button
       className={cn(
         "flex w-full items-center justify-between gap-2 py-3",
-        className,
+        column.columnDef.meta?.align === "right" && "flex-row-reverse",
       )}
       onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
     >
