@@ -2,7 +2,6 @@ import { Column } from "@tanstack/react-table";
 import { ArrowDown, ArrowUp, ChevronsUpDown } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 interface DataTableColumnHeaderProps<TData, TValue>
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -20,22 +19,21 @@ export function SortableColumnHeader<TData, TValue>({
   }
 
   return (
-    <div className={cn("flex items-center space-x-2", className)}>
-      <Button
-        variant="ghost"
-        size="sm"
-        className="-ml-3 h-8 data-[state=open]:bg-accent"
-        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      >
-        <span>{title}</span>
-        {column.getIsSorted() === "desc" ? (
-          <ArrowDown />
-        ) : column.getIsSorted() === "asc" ? (
-          <ArrowUp />
-        ) : (
-          <ChevronsUpDown className="h-4 w-4 opacity-0" />
-        )}
-      </Button>
-    </div>
+    <button
+      className={cn(
+        "flex w-full items-center justify-between gap-2 py-3",
+        className,
+      )}
+      onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+    >
+      <span className="whitespace-nowrap">{title}</span>
+      {column.getIsSorted() === "desc" ? (
+        <ArrowDown className="h-4 w-4" />
+      ) : column.getIsSorted() === "asc" ? (
+        <ArrowUp className="h-4 w-4" />
+      ) : (
+        <ChevronsUpDown className="h-4 w-4 opacity-0" />
+      )}
+    </button>
   );
 }

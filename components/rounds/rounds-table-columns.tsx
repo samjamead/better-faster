@@ -26,7 +26,16 @@ export const columns: ColumnDef<Round>[] = [
   {
     accessorKey: "handicap_index",
     header: ({ column }) => {
-      return <SortableColumnHeader column={column} title="Handicap Index" />;
+      return (
+        <SortableColumnHeader
+          column={column}
+          title="Handicap Index"
+          className="flex-row-reverse"
+        />
+      );
+    },
+    meta: {
+      align: "right",
     },
   },
   {
