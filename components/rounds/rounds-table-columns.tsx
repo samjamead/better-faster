@@ -1,7 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-import { Round } from "@/lib/types";
+import { Round } from "@/types/round";
 import { SortableColumnHeader } from "@/components/data-tables/sortable-column-header";
 import { format } from "date-fns";
 export const columns: ColumnDef<Round>[] = [
