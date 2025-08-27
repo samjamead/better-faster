@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { getRounds } from "@/api/get-rounds";
 import { useQuery } from "@tanstack/react-query";
 import {
@@ -21,13 +21,25 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+
 import LoadingDataTable from "@/components/loading-states/loading-data-table";
 import { cn } from "@/lib/utils";
 import CalculateCourseStats from "./calculate-course-stats";
 import { CourseStats } from "@/types/course-stats";
 
-export default function RoundsTable() {
+export default function CoursesTable() {
   const [sorting, setSorting] = useState<SortingState>([]);
+  const [open, setOpen] = useState(false);
+  const [selectedCourse, setSelectedCourse] = useState<CourseStats | null>(
+    null,
+  );
 
   const {
     data: rounds = [],
@@ -38,7 +50,10 @@ export default function RoundsTable() {
     queryFn: () => getRounds(),
   });
 
-  const courseStats = CalculateCourseStats(rounds || []);
+  const courseStats = useMemo(
+    () => CalculateCourseStats(rounds || []),
+    [rounds],
+  );
 
   const columns: ColumnDef<CourseStats>[] =
     courseStats.length > 0
@@ -64,8 +79,16 @@ export default function RoundsTable() {
   if (isLoading) return <LoadingDataTable />;
 
   return (
-    <div className="rounded-md border">
-      <Table>
+    <>
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Course Stats</DialogTitle>
+            <DialogDescription>{selectedCourse?.course}.</DialogDescription>
+          </DialogHeader>
+        </DialogContent>
+      </Dialog>
+      <Table className="w-auto border">
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow key={headerGroup.id}>
@@ -90,6 +113,11 @@ export default function RoundsTable() {
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                className="cursor-pointer"
+                onClick={() => {
+                  setSelectedCourse(row.original);
+                  setOpen(true);
+                }}
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell
@@ -113,6 +141,6 @@ export default function RoundsTable() {
           )}
         </TableBody>
       </Table>
-    </div>
+    </>
   );
 }
