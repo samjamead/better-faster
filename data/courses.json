@@ -1,0 +1,406 @@
+{
+  "courses": [
+    { "id": "c1", "name": "Royal North Devon" },
+    { "id": "c2", "name": "Royal Jersey" }
+  ],
+  "divisions": [{ "id": "dM", "code": "men" }],
+  "tees": [
+    { "id": "c1tW", "courseId": "c1", "name": "White", "color": "#ffffff" },
+    { "id": "c1tY", "courseId": "c1", "name": "Yellow", "color": "#e6c200" },
+    { "id": "c2tW", "courseId": "c2", "name": "White", "color": "#ffffff" }
+  ],
+  "courseRatings": [
+    {
+      "courseId": "c1",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "courseRating": 72.6,
+      "slopeRating": 132,
+      "par": 72,
+      "ratingDate": "2024-04-01"
+    },
+    {
+      "courseId": "c1",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "courseRating": 71.4,
+      "slopeRating": 128,
+      "par": 72,
+      "ratingDate": "2024-04-01"
+    },
+    {
+      "courseId": "c2",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "courseRating": 70.1,
+      "slopeRating": 121,
+      "par": 70,
+      "ratingDate": "2024-04-01"
+    }
+  ],
+  "holes": [
+    { "id": "c1h1", "courseId": "c1", "number": 1 },
+    { "id": "c1h2", "courseId": "c1", "number": 2 },
+    { "id": "c1h3", "courseId": "c1", "number": 3 },
+    { "id": "c1h4", "courseId": "c1", "number": 4 },
+    { "id": "c1h5", "courseId": "c1", "number": 5 },
+    { "id": "c1h6", "courseId": "c1", "number": 6 },
+    { "id": "c1h7", "courseId": "c1", "number": 7 },
+    { "id": "c1h8", "courseId": "c1", "number": 8 },
+    { "id": "c1h9", "courseId": "c1", "number": 9 },
+    { "id": "c1h10", "courseId": "c1", "number": 10 },
+    { "id": "c1h11", "courseId": "c1", "number": 11 },
+    { "id": "c1h12", "courseId": "c1", "number": 12 },
+    { "id": "c1h13", "courseId": "c1", "number": 13 },
+    { "id": "c1h14", "courseId": "c1", "number": 14 },
+    { "id": "c1h15", "courseId": "c1", "number": 15 },
+    { "id": "c1h16", "courseId": "c1", "number": 16 },
+    { "id": "c1h17", "courseId": "c1", "number": 17 },
+    { "id": "c1h18", "courseId": "c1", "number": 18 },
+    { "id": "c2h1", "courseId": "c2", "number": 1 }
+  ],
+  "holeDetails": [
+    {
+      "courseId": "c1",
+      "holeId": "c1h1",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 15,
+      "yards": 481
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h1",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 15,
+      "yards": 461
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h2",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 7,
+      "yards": 424
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h2",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 7,
+      "yards": 418
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h3",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 5,
+      "yards": 423
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h3",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 5,
+      "yards": 410
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h4",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 11,
+      "yards": 357
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h4",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 11,
+      "yards": 350
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h5",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 16,
+      "yards": 138
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h5",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 16,
+      "yards": 138
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h6",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 1,
+      "yards": 411
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h6",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 1,
+      "yards": 400
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h7",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 9,
+      "yards": 515
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h7",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 9,
+      "yards": 499
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h8",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 13,
+      "yards": 180
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h8",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 13,
+      "yards": 156
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h9",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 3,
+      "yards": 451
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h9",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 3,
+      "yards": 429
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h10",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 10,
+      "yards": 376
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h10",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 10,
+      "yards": 352
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h11",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 12,
+      "yards": 368
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h11",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 12,
+      "yards": 363
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h12",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 2,
+      "yards": 426
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h12",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 2,
+      "yards": 410
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h13",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 8,
+      "yards": 444
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h13",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 8,
+      "yards": 441
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h14",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 14,
+      "yards": 207
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h14",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 14,
+      "yards": 181
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h15",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 4,
+      "yards": 434
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h15",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 4,
+      "yards": 412
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h16",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 17,
+      "yards": 160
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h16",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 3,
+      "strokeIndex": 17,
+      "yards": 144
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h17",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 6,
+      "yards": 555
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h17",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 6,
+      "yards": 545
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h18",
+      "teeId": "c1tW",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 18,
+      "yards": 415
+    },
+    {
+      "courseId": "c1",
+      "holeId": "c1h18",
+      "teeId": "c1tY",
+      "divisionId": "dM",
+      "par": 4,
+      "strokeIndex": 18,
+      "yards": 392
+    },
+    {
+      "courseId": "c2",
+      "holeId": "c2h1",
+      "teeId": "c2tW",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 16,
+      "yards": 400
+    },
+    {
+      "courseId": "c2",
+      "holeId": "c2h1",
+      "teeId": "c2tW",
+      "divisionId": "dM",
+      "par": 5,
+      "strokeIndex": 16,
+      "yards": 435
+    }
+  ]
+}
