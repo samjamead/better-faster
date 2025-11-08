@@ -106,7 +106,7 @@ export default function LogRound() {
         <div>
           <select
             className="border-foreground/25 rounded-md border px-2 py-1"
-            value={userInputs.courseId}
+            value={userInputs.courseId ?? ""}
             onChange={handleCourseChange}
           >
             {coursesData.courses.map((course) => (
@@ -119,7 +119,7 @@ export default function LogRound() {
         <div>
           <select
             className="border-foreground/25 rounded-md border px-2 py-1"
-            value={userInputs.tee}
+            value={userInputs.tee ?? ""}
             onChange={handleTeeChange}
           >
             {coursesData.tees
