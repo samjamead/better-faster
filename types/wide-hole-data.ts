@@ -1,0 +1,37 @@
+import type { ApproachOutcome } from "@/types/approach";
+
+export type WideHoleData = {
+  id: number;
+  round_id: number;
+  date: string;
+  course: string;
+  course_slug: string;
+  course_rating: number;
+  slope_rating: number;
+  handicap_index: number;
+  course_handicap: number;
+  playing_handicap: number;
+  holes_played: number;
+  side_played: string | null;
+  hole_number: number;
+  tee_box: string;
+  yards: number;
+  stroke_index: number;
+  shots_given: number | null;
+  par: number;
+  gross: number | null;
+  net: number | null;
+  stableford: number | null;
+  tee_club: string | number | null;
+  hit_fairway: boolean | null;
+  fairway_miss: string | null;
+  tee_penalty: boolean | null;
+  approach_club: string | number | null;
+  gir: boolean | null;
+  approach_outcome: ApproachOutcome | null;
+  approach_penalty: boolean | null;
+  chipping_club: string | number | null;
+  up_and_down: boolean | null;
+  scrambling: boolean | null;
+  putts: number | null;
+};

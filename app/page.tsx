@@ -1,20 +1,18 @@
-import SummaryStats from "@/components/summary-stats/summary-stats";
-import { createClient } from "@/lib/supabase/server";
-import { redirect } from "next/navigation";
-export default async function Home() {
-  const supabase = await createClient();
+import { Suspense } from "react";
 
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+import { DisplayCoursesIndex } from "@/components/display-courses-index";
 
-  if (!user) {
-    redirect("/login");
-  }
-
+export default function ProtectedPage() {
   return (
-    <div className="grid grid-cols-1 items-start gap-8">
-      <SummaryStats />
-    </div>
+    <Suspense>
+      <div className="flex w-full flex-1 flex-col gap-12 py-12">
+        <p className="max-w-sm uppercase">
+          Trying to get better at golf by understanding what&apos;s actually
+          happening out there
+        </p>
+
+        <DisplayCoursesIndex />
+      </div>
+    </Suspense>
   );
 }

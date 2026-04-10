@@ -1,26 +1,43 @@
+import { Suspense } from "react";
+
 import type { Metadata } from "next";
-import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
-import Header from "@/components/header/header";
-import Sidebar from "@/components/sidebar/sidebar";
-import Footer from "@/components/footer/footer";
+import { ThemeProvider } from "next-themes";
+import { Geist_Mono, Inter, JetBrains_Mono } from "next/font/google";
+
+import { Footer } from "@/components/footer";
+import { Header } from "@/components/header";
 import QueryProvider from "@/components/query-provider";
-import { Inter, Inconsolata } from "next/font/google";
+import { cn } from "@/lib/utils";
+
+import "./globals.css";
+
+const defaultUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : "http://localhost:3000";
+
+export const metadata: Metadata = {
+  metadataBase: new URL(defaultUrl),
+  title: "mesh-sm1x",
+  description: "Something something darkside",
+};
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-inter",
 });
 
-const inconsolata = Inconsolata({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-inconsolata",
+  display: "swap",
+  variable: "--font-jetbrains-mono",
 });
 
-export const metadata: Metadata = {
-  title: "Better Faster",
-  description: "Practicing my way to category one",
-};
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
+});
 
 export default function RootLayout({
   children,
@@ -28,26 +45,35 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.variable} ${inconsolata.variable} h-full antialiased`}
-      >
-        <div className="flex min-h-svh flex-col">
-          <Header />
-          <div className="flex flex-1">
-            <div className="hidden md:block">
-              <Sidebar />
-            </div>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={cn(inter.variable, jetbrainsMono.variable, geistMono.variable)}
+    >
+      <body className="px-3 antialiased md:px-6">
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Suspense fallback={<div className="min-h-svh" />}>
+            <QueryProvider>
+              <div className="flex min-h-svh flex-col justify-between">
+                <div className="flex grow flex-col">
+                  <Suspense fallback={<div className="py-4" />}>
+                    <Header />
+                  </Suspense>
+                  <div className="max-w-custom mx-auto flex w-full grow flex-col">
+                    {children}
+                  </div>
+                </div>
 
-            <div className="flex flex-1 flex-col overflow-y-auto">
-              <div className="flex-1 px-3 py-8 md:px-8">
-                <QueryProvider>{children}</QueryProvider>
+                <Footer />
               </div>
-              <Footer />
-            </div>
-          </div>
-        </div>
-        <Toaster />
+            </QueryProvider>
+          </Suspense>
+        </ThemeProvider>
       </body>
     </html>
   );

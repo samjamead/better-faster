@@ -1,40 +1,12 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
-@plugin 'tailwindcss-animate';
+@plugin "tailwindcss-animate";
+
+@custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-blue-ribbon-50: #eef6ff;
-  --color-blue-ribbon-100: #d8eaff;
-  --color-blue-ribbon-200: #b9daff;
-  --color-blue-ribbon-300: #89c4ff;
-  --color-blue-ribbon-400: #52a4ff;
-  --color-blue-ribbon-500: #2a7eff;
-  --color-blue-ribbon-600: #0d58fd;
-  --color-blue-ribbon-700: #0c46e9;
-  --color-blue-ribbon-800: #1139bc;
-  --color-blue-ribbon-900: #143594;
-  --color-blue-ribbon-950: #11225a;
-
-  --color-emerald-50: #edfcf3;
-  --color-emerald-100: #d3f8e1;
-  --color-emerald-200: #abefc8;
-  --color-emerald-300: #74e1a9;
-  --color-emerald-400: #3dcb86;
-  --color-emerald-500: #19b06c;
-  --color-emerald-600: #0c8f56;
-  --color-emerald-700: #0a7247;
-  --color-emerald-800: #0b5a3a;
-  --color-emerald-900: #0a4a31;
-  --color-emerald-950: #042a1c;
-
   --color-background: hsl(var(--background));
-  --color-background-secondary: hsl(var(--background-secondary));
   --color-foreground: hsl(var(--foreground));
-
-  --color-muted: hsl(var(--muted));
-  --color-muted-foreground: hsl(var(--muted-foreground));
-
-  --color-muted-foreground: var(--muted-foreground);
 
   --color-card: hsl(var(--card));
   --color-card-foreground: hsl(var(--card-foreground));
@@ -47,6 +19,9 @@
 
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
 
   --color-accent: hsl(var(--accent));
   --color-accent-foreground: hsl(var(--accent-foreground));
@@ -69,11 +44,17 @@
   --radius-sm: calc(var(--radius) - 4px);
 
   --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+    var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica,
+    Arial, sans-serif;
+
   --font-mono:
-    var(--font-inconsolata), ui-monospace, SFMono-Regular, Menlo, Monaco,
-    Consolas, 'Liberation Mono', 'Courier New', monospace;
+    Berkeley Mono, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    Liberation Mono, Courier New, monospace;
+
+  --font-geist-mono: var(--font-geist-mono);
+  --font-jetbrains-mono: var(--font-jetbrains-mono);
+
+  --max-width-custom: 1400px;
 }
 
 /*
@@ -96,17 +77,16 @@
 
 @layer base {
   :root {
-    --foreground: 60 6% 12%;
-    --background: 60 20% 99%;
-    --background-secondary: 60 8% 96%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 3.9%;
-    --primary: 226 90% 55%;
-    --primary-foreground: 0 0% 9%;
-    --secondary: 142 46% 60%;
-    --secondary-foreground: 0 0% 98%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
     --muted: 0 0% 96.1%;
     --muted-foreground: 0 0% 45.1%;
     --accent: 0 0% 96.1%;
@@ -123,51 +103,39 @@
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
   }
-
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --background: 0 0% 9%;
-      --background-secondary: 0 0% 11%;
-      --foreground: 0 0% 98%;
-      --card: 0 0% 3.9%;
-      --card-foreground: 0 0% 98%;
-      --popover: 0 0% 3.9%;
-      --popover-foreground: 0 0% 98%;
-      --primary: 226 90% 55%;
-      --primary-foreground: 0 0% 9%;
-      --secondary: 142 46% 60%;
-      --secondary-foreground: 0 0% 98%;
-      --muted: 0 0% 14.9%;
-      --muted-foreground: 0 0% 63.9%;
-      --accent: 0 0% 14.9%;
-      --accent-foreground: 0 0% 98%;
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 0 0% 98%;
-      --border: 0 0% 20.9%;
-      --input: 0 0% 14.9%;
-      --ring: 0 0% 83.1%;
-      --chart-1: 220 70% 50%;
-      --chart-2: 160 60% 45%;
-      --chart-3: 30 80% 55%;
-      --chart-4: 280 65% 60%;
-      --chart-5: 340 75% 55%;
-    }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
+}
 
+@layer base {
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
-    font-family:
-      var(--font-inter),
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      "Helvetica Neue",
-      Arial,
-      sans-serif;
   }
 }
